@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ColorPicker } from "@apsc/color";
+  import { ColorPicker,ColorEditHex } from "@apsc/color";
   import "@apsc/color/color-picker.css";
   import ActionButton from "./ActionButton.svelte";
   import PopupContainer from "./PopupContainer.svelte";
@@ -28,6 +28,7 @@
   <PopupContainer slot="popupContent" title="">
     <div class="transparent-input">
       <ColorPicker class="h-64 p-2" bind:color={value} />
+      <ColorEditHex bind:color={value}  />
     </div>
   </PopupContainer>
 
