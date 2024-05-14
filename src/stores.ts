@@ -154,6 +154,7 @@ export const canvasSizes: CanvasSize[] = [
   { title: "1080p", width: 1920, height: 1080 },
   { title: "Square", width: 1920, height: 1920 },
   { title: "Portrait", width: 1000, height: 1800 },
+  { title: "Screensharing", width: -1, height: -1 },
 ];
 
 export const recordingFPSOptions: number[] = [30, 60];
@@ -167,6 +168,14 @@ export const canvasDimensions = (() => {
   const _set = store.set;
   store.set = (size) => {
     localStorage.setItem("canvasSize", size.title);
+
+    if (size.title == "Screensharing") {
+      // Load dimensions if display
+      displayDimensions.subscribe((dim) => {
+        _set({ title: size.title, width: dim.width, height: dim.height });
+      })
+      return
+    }
     _set(size);
   };
 
