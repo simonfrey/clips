@@ -348,12 +348,18 @@
                 />
               </div>
               <div class="w-36">
+
                 <Select
                   title=""
                   name="webcamWidth"
                   options={sizeOptions}
                   bind:value={$webcamLayoutState.size}
                 />
+                <div class="text-center">
+                  <button on:click={() => $webcamLayoutState.size += 0.05}>➕</button>
+                  <button on:click={() => $webcamLayoutState.size -= 0.05}>➖</button>
+                  </div>
+
               </div>
               {#if $webcamLayoutState.shape === WebcamShape.initial}
                 <div
